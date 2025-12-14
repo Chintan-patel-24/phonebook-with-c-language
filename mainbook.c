@@ -118,3 +118,15 @@ void searchfun(){
 	}
 	}
 }
+	if(flag==0){
+		system("cls");
+		gotoxy(39,4);
+		printf("No record found.");;
+		gotoxy(39,6);
+		printf("Enter a to enter file again or double y key to open menu section:");
+		if(getch()=='a'){
+			system("cls");
+			searchfun();
+		}
+	
+	}
