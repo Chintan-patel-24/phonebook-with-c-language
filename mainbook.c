@@ -1,0 +1,13 @@
+#include <stdio.h>
+#include <conio.h>
+#include <windows.h>
+#include <dos.h>
+#include <string.h>
+void menu(void);
+void password(void);
+void namefun(void);
+void searchfun(void);
+void listfun(void);
+void modifyfun(void);
+void deletefun(void);
+void exitfun(void);
