@@ -130,3 +130,35 @@ void searchfun(){
 		}
 	
 	}
+
+	fclose(fptr);
+}
+void listfun(){
+		FILE *fptr;
+	char name[100],address[100],gmail[100],gender[8];
+	double phone;
+	int f;
+	fptr=fopen("ebraj.txt","r");
+	system("cls");
+	gotoxy(31,2);
+	printf("\xB3\xDB\xDB\xDB\xDB\xDB\xDB\xDB\xDB LIST SECTION OPENED \xDB\xDB\xDB\xDB\xDB\xDB\xDB\xDB\xB3");
+	printf("\n");
+	while(fscanf(fptr,"%s %s %s %s %lf",name,address,gender,gmail,&phone)!=EOF){
+		
+			printf("------------------------------------------\n");
+		printf("Name:%s\n",name);
+		printf("Address:%s\n",address);
+		printf("Gender:%s\n",gender);
+		printf("Gmail:%s\n",gmail);
+		printf("Phone:%.0lf\n",phone);
+			f=1;
+				printf("------------------------------------------");
+				printf("\n\n");
+		}
+		Sleep(1000);
+		printf("Enter y for menu section:");
+		while(getch()=='y'){
+			menu();
+		}
+			fclose(fptr);
+			}
