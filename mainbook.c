@@ -335,3 +335,44 @@ void password(void){
 }
 	
 }
+void menu(){
+	system("cls");
+	gotoxy(30,1);
+	printf("\xB3\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2 PHONEBOOK DIRECTORY \xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB3");
+	gotoxy(31,4);
+	printf("\xB3\xDB\xDB\xDB\xDB\xDB\xDB\xDB\xDB 1.Add New");
+	gotoxy(31,7);
+	printf("\xB3\xDB\xDB\xDB\xDB\xDB\xDB\xDB\xDB 2.Search");
+	gotoxy(31,10);
+	printf("\xB3\xDB\xDB\xDB\xDB\xDB\xDB\xDB\xDB 3.List");
+	gotoxy(31,13);
+	printf("\xB3\xDB\xDB\xDB\xDB\xDB\xDB\xDB\xDB 4.Modify");
+	gotoxy(31,16);
+	printf("\xB3\xDB\xDB\xDB\xDB\xDB\xDB\xDB\xDB 5.Delete");
+	gotoxy(31,19);
+	printf("\xB3\xDB\xDB\xDB\xDB\xDB\xDB\xDB\xDB 6.Exit");
+	switch(getch()){
+		case '1':
+			namefun();
+			break;
+		case '2':
+			searchfun();
+			break;
+		case '3':
+			listfun();
+			break;
+		case '4':
+			modifyfun();
+			break;
+		case '5':
+			deletefun();
+			break;
+		case '6':
+			exitfun();
+			break;
+		default:
+			system("cls");
+			printf("Invalid Enter.");
+			getch();
+}
+}
