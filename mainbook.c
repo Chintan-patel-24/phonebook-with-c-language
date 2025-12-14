@@ -162,3 +162,64 @@ void listfun(){
 		}
 			fclose(fptr);
 			}
+void modifyfun(){
+	FILE *fptr,*fptr1;
+	char name[100],address[100],gmail[100],gmail1[100],address1[100],name1[100],gender[8],gender1[8];
+	int res,f=0;
+	double phone,phone1;
+	fptr=fopen("ebraj.txt","r");
+	fptr1=fopen("temp.txt","a");
+	system("cls");
+	gotoxy(31,4);
+	printf("Enter the name: ");
+	gets(name1);
+	system("cls");
+	while(fscanf(fptr,"%s %s %s %s %lf\n",name,address,gender,gmail,&phone)!=EOF){
+		res=strcmp(name,name1);
+		if(res==0)
+		{
+			f=1;
+			gotoxy(31,4);
+	printf("\xB3\xDB\xDB\xDB\xDB\xDB\xDB\xDB\xDB MODIFY SECTION OPENED \xDB\xDB\xDB\xDB\xDB\xDB\xDB\xDB\xB3");
+			gotoxy(31,6);
+			printf("Enter the new address:");
+			scanf("%s",address1);
+				gotoxy(31,7);
+			printf("Enter the gender:");
+			scanf("%s",gender1);
+			gotoxy(31,8);
+			printf("Enter the new gmail:");
+			scanf("%s",gmail1);
+			gotoxy(31,9);
+			printf("Enter the new phone number:");
+			scanf("%lf",&phone1);
+			fprintf(fptr1,"%s %s %s %s %.0lf\n",name,address1,gender1,gmail1,phone1);
+			
+		}else{
+			fprintf(fptr1,"%s %s %s %s %.0lf\n",name,address,gender,gmail,phone);
+		}
+	}
+	if(f==0){
+		printf("Record Not found.");
+			}
+	fclose(fptr);
+	fclose(fptr1);
+	fptr=fopen("ebraj.txt","w");
+	fclose(fptr);
+	fptr=fopen("ebraj.txt","a");
+	fptr1=fopen("temp.txt","r");
+	while(fscanf(fptr1,"%s %s %s %s %lf\n",name,address,gender,gmail,&phone)!=EOF){
+		fprintf(fptr,"%s %s %s %s %.0lf\n",name,address,gender,gmail,phone);
+		
+	}
+	
+	fclose(fptr);
+	fclose(fptr1);
+	fptr1=fopen("temp.txt","w");
+	fclose(fptr1);
+	printf("\n\nPress y for menu option.");
+	fflush(stdin);
+	if(getch()=='y'){
+		menu();
+	}
+}
