@@ -223,3 +223,115 @@ void modifyfun(){
 		menu();
 	}
 }
+void deletefun(){
+	FILE *fptr,*fptr1;
+	char name[100],address[100],gmail[100],gmail1[100],address1[100],name1[100],gender[8];
+	int res,f=0;
+	double phone,phone1;
+	fptr=fopen("ebraj.txt","r");
+	fptr1=fopen("temp.txt","a");
+	system("cls");
+	gotoxy(31,4);
+	printf("Enter the CONTACT name that you want to delete: ");
+	gets(name1);
+	system("cls");
+	while(fscanf(fptr,"%s %s %s %s %lf\n",name,address,gender,gmail,&phone)!=EOF){
+		res=strcmp(name,name1);
+		if(res==0)
+		{
+			f=1;
+			printf("Record deleted successfully");
+			
+		}else{
+			fprintf(fptr1,"%s %s %s %s %.0lf\n",name,address,gender,gmail,phone);
+		}
+	}
+	if(f==0){
+		printf("Record Not found.");
+			}
+	fclose(fptr);
+	fclose(fptr1);
+	fptr=fopen("ebraj.txt","w");
+	fclose(fptr);
+	fptr=fopen("ebraj.txt","a");
+	fptr1=fopen("temp.txt","r");
+	while(fscanf(fptr1,"%s %s %s %s %lf\n",name,address,gender,gmail,&phone)!=EOF){
+		fprintf(fptr,"%s %s %s %s %.0lf\n",name,address,gender,gmail,phone);
+		
+	}
+	
+	fclose(fptr);
+	fclose(fptr1);
+	fptr1=fopen("temp.txt","w");
+	fclose(fptr1);
+	printf("\n\nPress y for menu option.");
+	fflush(stdin);
+	if(getch()=='y'){
+		menu();
+	};
+}
+void exitfun(){
+	system("cls");
+	gotoxy(31,4);
+	printf("\xDB\xDB\xDB\xDB TEAM MEMBERS \xDB\xDB\xDB\xDB");
+	gotoxy(31,6);
+	printf("\xDB EBRAJ GURUNG.");
+	gotoxy(31,8);
+	printf("\xDB BEEKASH BASAULA.");
+	gotoxy(31,10);
+	printf("\xDB SAMUNDRA POUDEL.");
+	gotoxy(31,12);
+	printf("\xDB SAGAR DHAKAL.");
+}
+void password(void){
+	char passwords[20]={"ebrajdon"};
+	gotoxy(22,2);
+	int j;
+	int z;
+	char name[40]="Authorized Person Only";
+	z=strlen(name);
+	for(j=0;j<=16;j++){
+		Sleep(50);
+		printf("\xDB");
+	}
+	for(j=0;j<=z;j++){
+		Sleep(60);
+		printf(" %c",name[j]);
+	}
+	for(j=0;j<=16;j++){
+		Sleep(50);
+		printf("\xDB");
+	}
+	gotoxy(30,4);
+	printf("Password:");
+	char ch,pass[20];
+	char w='*';
+	int i=0;
+	while(ch!=13 && i < 20){
+		ch=getch();
+		if(ch!=13 && ch!=8){
+			printf("%c",w);
+			pass[i]=ch;
+			i++;
+		}
+		else if(ch==8 && i>0) {
+			printf("\b \b");
+			i--;
+		}
+    }
+	pass[i]='\0';
+	if(strcmp(pass,passwords)==0){
+		gotoxy(30,6);
+		printf("CORRECT PASSWORD.");
+		Sleep(1000);
+		menu();
+	}
+	else{
+		gotoxy(30,6);
+		printf("You entered the wrong password.");
+		Sleep(700);
+		system("cls");
+		password();
+}
+	
+}
