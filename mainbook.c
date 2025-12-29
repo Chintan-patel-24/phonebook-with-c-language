@@ -3,6 +3,7 @@
 #include <windows.h>
 #include <dos.h>
 #include <string.h>
+
 void menu(void);
 void password(void);
 void namefun(void);
